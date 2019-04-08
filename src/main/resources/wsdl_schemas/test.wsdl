@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:ns1="http://www.cleverbuilder.com/BookService/" 
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="BookService"
+    targetNamespace="http://www.cleverbuilder.com/BookService/">
+
+
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://www.cleverbuilder.com/BookService/" xmlns:ns1="http://www.cleverbuilder.com/BookService/">
+            <xsd:element name="AddBookRequest" type="ns1:AddBookRequest"/>
+            <xsd:complexType name="AddBookRequest">
+                <xsd:sequence>
+                    <xsd:element name="Title" type="xsd:string"></xsd:element>
+                    <xsd:element name="Author" type="xsd:string"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="AddBookResponse" type="ns1:AddBookResponse"/>
+            <xsd:complexType name="AddBookResponse">
+                <xsd:sequence>
+                    <xsd:element name="ID" type="xsd:string"></xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    
+    
+    
+    
+    
+    <wsdl:message name="AddBook">
+        <wsdl:part name="parameters" element="ns1:AddBookRequest"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="AddBookResponse">
+        <wsdl:part name="parameters" element="ns1:AddBookResponse"></wsdl:part>
+    </wsdl:message>
+    
+
+
+
+
+    <wsdl:portType name="BookService">
+        <wsdl:operation name="AddBook">
+            <wsdl:input message="ns1:AddBook" name="AddBook"></wsdl:input>
+            <wsdl:output message="ns1:AddBookResponse" name="AddBookResponse"></wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    
+    
+    
+    
+    
+<!--     
+    <wsdl:binding name="BookServiceSOAP" type="ns1:BookService">
+        <soap:binding style="document"
+            transport="http://schemas.xmlsoap.org/soap/http" />
+        <wsdl:operation name="AddBook">
+            <soap:operation soapAction="http://www.cleverbuilder.com/BookService/AddBook" />
+            <wsdl:input>
+                <soap:body use="literal" />
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" />
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    
+
+
+
+    <wsdl:service name="BookService">
+        <wsdl:port binding="ns1:BookServiceSOAP" name="BookServiceSOAP">
+            <soap:address location="http://www.example.org/BookService" />
+        </wsdl:port>
+    </wsdl:service>
+ -->    
+</wsdl:definitions>
